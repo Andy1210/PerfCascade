@@ -17,4 +17,6 @@ export interface Context {
   diagramHeight: number;
   /** Chart config/customization options */
   options: ChartRenderOption;
+  /** start time of the current time-slice (if available) */
+  activeTimeslice?: number;
 }

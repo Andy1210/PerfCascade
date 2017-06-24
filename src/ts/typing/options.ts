@@ -22,7 +22,6 @@ export interface ChartRenderOption {
   legendHolder: HTMLElement;
   /** Callback called when the HAR doc has been parsed into PerfCascases */
   onParsed: (data: WaterfallDocs) => void;
-
   /** Segments of consecutive slices of time in milliseconds */
   timeSlices: number[];
   /** callback called when entering a new timeSlice */

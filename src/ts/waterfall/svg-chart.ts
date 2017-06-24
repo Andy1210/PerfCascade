@@ -13,6 +13,7 @@ import { makeTooltip } from "./row/svg-tooltip";
 import * as alignmentHelper from "./sub-components/svg-alignment-helper";
 import * as generalComponents from "./sub-components/svg-general-components";
 import * as marks from "./sub-components/svg-marks";
+import { setupTimeSlices } from "./sub-components/svg-time-slices";
 
 /**
  * Get a string that's as wide, or wider than any number from 0-n.
@@ -56,6 +57,7 @@ function createContext(data: WaterfallData, options: ChartRenderOption,
   const unit = data.durationMs / 100;
   const diagramHeight = (entriesToShow.length + 1) * options.rowHeight;
   const context = {
+    activeTimeslice: null,
     diagramHeight,
     options,
     overlayManager: undefined,
@@ -191,6 +193,9 @@ export function createWaterfallSvg(data: WaterfallData, options: ChartRenderOpti
   timeLineHolder.appendChild(rowHolder);
   timeLineHolder.appendChild(overlayHolder);
   timeLineHolder.appendChild(makeTooltip(options));
+  if (options.timeSlices.length > 0 && (options.timeSliceOnEnter || options.timeSliceOnLeave)) {
+    setupTimeSlices(timeLineHolder, context);
+  }
 
   return timeLineHolder;
 }
