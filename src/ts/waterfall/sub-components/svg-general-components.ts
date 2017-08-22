@@ -28,19 +28,19 @@ const appendSecond = (context: Context, timeHolder: SVGGElement,
   if (addLabel) {
     const showTextBefore = (sec > secsTotal - 0.2);
     lineClass = "second-line";
-    let x = roundNumber(secPerc * sec) + 0.5 + "%";
+    let labelX = roundNumber(secPerc * sec) + 0.5 + "%";
     const css = {};
     if (showTextBefore) {
-      x = roundNumber(secPerc * sec) - 0.5 + "%";
+      labelX = roundNumber(secPerc * sec) - 0.5 + "%";
       css["text-anchor"] = "end";
     }
-    lineLabel = svg.newTextEl(sec + "s", { x, y: diagramHeight }, css);
+    lineLabel = svg.newTextEl(sec + "s", { x: labelX, y: diagramHeight }, css);
   }
 
-  const x = roundNumber(secPerc * sec) + "%";
+  const lineX = roundNumber(secPerc * sec) + "%";
   const lineEl = svg.newLine({
-    x1: x,
-    x2: x,
+    x1: lineX,
+    x2: lineX,
     y1: 0,
     y2: diagramHeight,
   }, lineClass);
